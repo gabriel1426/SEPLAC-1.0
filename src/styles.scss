@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'styles/app';
+
+.tr:hover {
+  background: rgb(236, 38, 38);
+}
+tr[_ngcontent-bqq-c8]:hover {
+  background: rgba(247, 28, 28, 0.336) !important;
+}
+.paginate_button:hover {
+  background: rgba(247, 28, 28, 0.336) !important;
+  border: 0px !important;
+}
+
+.current {
+  background: rgba(247, 28, 28, 0.336) !important;
+  border: 0px !important;
+}
+.snackbarsusses {
+  background: #00c853;
+  text-align: center;
+  color: white;
+}
+
+.mat-simple-snackbar {
+  text-align: center !important;
+  display: block !important;
+}
+.customizer-handle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;
+
+  [dir='rtl'] & {
+    left: 30px;
+    right: auto;
+  }
+}
+
+.mat-card {
+  margin-bottom: 0px !important;
+}

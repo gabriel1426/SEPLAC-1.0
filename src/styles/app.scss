@@ -1,0 +1,16 @@
+// Configuration
+@import 'functions';
+@import 'variables';
+@import 'mixins';
+// Themeing
+@import 'theme/theme';
+@import 'widgets/widgets';
+@import 'plugins/plugins';
+// Helpers
+@import 'helpers/helpers';
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+@include matero-admin-theme($theme);

@@ -1,0 +1,61 @@
+{
+  "menu": [
+    {
+      "state": "dashboard",
+      "name": "Dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-500",
+        "value": "5"
+      }
+    },
+    {
+      "state": "sessions",
+      "name": "Sessions",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "state": "403",
+          "name": "403",
+          "type": "link"
+        },
+        {
+          "state": "404",
+          "name": "404",
+          "type": "link"
+        },
+        {
+          "state": "500",
+          "name": "500",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "state": "docentes",
+      "name": "Docentes",
+      "type": "link",
+      "icon": "school"
+    },
+    {
+      "state": "ejes_estrategicos",
+      "name": "Ejes estrategicos",
+      "type": "link",
+      "icon": "navigation"
+    },
+    {
+      "state": "lineas",
+      "name": "Lineas estrategicas",
+      "type": "link",
+      "icon": "shuffle"
+    },
+    {
+      "state": "administrativos",
+      "name": "Administrativos",
+      "type": "link",
+      "icon": "account_box"
+    }
+  ]
+}
