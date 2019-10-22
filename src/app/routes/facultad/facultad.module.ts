@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { FacultadRoutingModule } from './facultad-routing.module';
 import { FacultadListasFacultadComponent } from './listas-facultad/listas-facultad.component';
+import { DataTablesModule } from 'angular-datatables';
 
 const COMPONENTS = [FacultadListasFacultadComponent];
 const COMPONENTS_DYNAMIC = [];
@@ -9,7 +10,8 @@ const COMPONENTS_DYNAMIC = [];
 @NgModule({
   imports: [
     SharedModule,
-    FacultadRoutingModule
+    FacultadRoutingModule,
+    DataTablesModule
   ],
   declarations: [
     ...COMPONENTS,

@@ -52,6 +52,24 @@
       "icon": "shuffle"
     },
     {
+      "state": "facultad",
+      "name": "Facultades",
+      "type": "link",
+      "icon": "school"
+    },
+    {
+      "state": "departamento",
+      "name": "Departamentos",
+      "type": "link",
+      "icon": "school"
+    },
+    {
+      "state": "programas",
+      "name": "Programas",
+      "type": "link",
+      "icon": "school"
+    },
+    {
       "state": "administrativos",
       "name": "Administrativos",
       "type": "link",
