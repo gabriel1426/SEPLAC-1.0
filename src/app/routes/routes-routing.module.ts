@@ -66,6 +66,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./seguimiento/seguimiento.module').then(m => m.SeguimientoModule),
       },
+  { path: 'facultad', loadChildren: () => import('./facultad/facultad.module').then(m => m.FacultadModule) },
+  { path: 'departamento', loadChildren: () => import('./departamento/departamento.module').then(m => m.DepartamentoModule) },
     ],
   },
   {
