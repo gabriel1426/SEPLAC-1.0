@@ -14,78 +14,46 @@ export class LineasListarLineaComponent {
   @ViewChild('modificar', { static: false }) modificar: TemplateRef<any>;
   dtOptions: DataTables.Settings = {};
   prueba = '2';
-  docentes = [
+  lineas = [
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
+      descripcion: 'descripcion de la linea 1',
       estado: 'activo',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
+      descripcion: 'descripcion de la linea 2',
       estado: 'activo',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
+      descripcion: 'descripcion de la linea 3',
       estado: 'activo',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
+      descripcion: 'descripcion de la linea 4',
       estado: 'activo',
     },
   ];
-  reactiveForm2: FormGroup;
-  modificarDocente: FormGroup;
+  registrarLinea: FormGroup;
+  modificarLinea: FormGroup;
 
   constructor(private snackBar: MatSnackBar, private fb: FormBuilder, public dialog: MatDialog) {
-    this.reactiveForm2 = this.fb.group({
+    this.registrarLinea = this.fb.group({
       codigo: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       nombre: ['', [Validators.required]],
-      contrato: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      cargo: ['', [Validators.required]],
-      dependencia: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]]
     });
 
-    this.modificarDocente = this.fb.group({
+    this.modificarLinea = this.fb.group({
       codigo: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       nombre: ['', [Validators.required]],
-      contrato: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      cargo: ['', [Validators.required]],
-      dependencia: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]]
     });
     this.tabla();
   }
@@ -127,22 +95,16 @@ export class LineasListarLineaComponent {
       },
     };
   }
-  agregarDocente() {
+  agregarLinea() {
     this.dialog.open(this.agregar);
   }
 
-  modificarDocenteDialog(item: any) {
-    this.reactiveForm2.controls.codigo.setValue(item.codigo);
-    this.reactiveForm2.controls.email.setValue(item.email);
-    this.reactiveForm2.controls.nombre.setValue(item.nombre);
-    this.reactiveForm2.controls.contrato.setValue(item.contrato);
-    this.reactiveForm2.controls.mobile.setValue(item.mobile);
-    this.reactiveForm2.patchValue({ cargo: '1' });
-    this.reactiveForm2.controls.dependencia.setValue('dependencia');
-    this.reactiveForm2.controls.apellido.setValue(item.apellido);
-    this.reactiveForm2.controls.estado.setValue(item.estado);
+  modificarLineaDialog(item: any) {
+    this.modificarLinea.controls.codigo.setValue(item.codigo);
+    this.modificarLinea.controls.nombre.setValue(item.nombre);
+    this.modificarLinea.controls.descripcion.setValue(item.descripcion);
 
-    console.log(this.reactiveForm2);
+    console.log(this.modificarLinea);
     this.dialog.open(this.modificar);
   }
 
