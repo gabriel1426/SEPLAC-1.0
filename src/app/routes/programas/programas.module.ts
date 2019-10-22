@@ -4,6 +4,7 @@ import { ProgramasRoutingModule } from './programas-routing.module';
 import { ProgramasListarProgramaComponent } from './listar-programa/listar-programa.component';
 import { ProgramasModificarProgramaComponent } from './modificar-programa/modificar-programa.component';
 import { ProgramasRegistrarProgramaComponent } from './registrar-programa/registrar-programa.component';
+import { DataTablesModule } from 'angular-datatables';
 
 const COMPONENTS = [ProgramasListarProgramaComponent, ProgramasModificarProgramaComponent, ProgramasRegistrarProgramaComponent];
 const COMPONENTS_DYNAMIC = [];
@@ -11,7 +12,8 @@ const COMPONENTS_DYNAMIC = [];
 @NgModule({
   imports: [
     SharedModule,
-    ProgramasRoutingModule
+    ProgramasRoutingModule,
+    DataTablesModule
   ],
   declarations: [
     ...COMPONENTS,

@@ -4,7 +4,7 @@ import { ProgramasListarProgramaComponent } from './listar-programa/listar-progr
 import { ProgramasModificarProgramaComponent } from './modificar-programa/modificar-programa.component';
 import { ProgramasRegistrarProgramaComponent } from './registrar-programa/registrar-programa.component';
 
-const routes: Routes = [{ path: 'listar-programa', component: ProgramasListarProgramaComponent },
+const routes: Routes = [{ path: '', component: ProgramasListarProgramaComponent },
 { path: 'modificar-programa', component: ProgramasModificarProgramaComponent },
 { path: 'registrar-programa', component: ProgramasRegistrarProgramaComponent }
 ];

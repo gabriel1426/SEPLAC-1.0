@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { DepartamentoRoutingModule } from './departamento-routing.module';
 import { DepartamentoListasDepartamentoComponent } from './listas-departamento/listas-departamento.component';
+import { DataTablesModule } from 'angular-datatables';
 
 const COMPONENTS = [DepartamentoListasDepartamentoComponent];
 const COMPONENTS_DYNAMIC = [];
@@ -9,7 +10,8 @@ const COMPONENTS_DYNAMIC = [];
 @NgModule({
   imports: [
     SharedModule,
-    DepartamentoRoutingModule
+    DepartamentoRoutingModule,
+    DataTablesModule
   ],
   declarations: [
     ...COMPONENTS,
