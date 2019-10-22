@@ -57,3 +57,7 @@ tr[_ngcontent-bqq-c8]:hover {
   font-size: 14px;
   padding: 1px;
 }
+
+mat-card-content {
+  overflow-x: scroll !important;
+}

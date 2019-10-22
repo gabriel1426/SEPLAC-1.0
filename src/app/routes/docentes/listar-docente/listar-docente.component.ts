@@ -13,7 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DocentesListarDocenteComponent {
   @ViewChild('agregar', { static: false }) agregar: TemplateRef<any>;
   @ViewChild('modificar', { static: false }) modificar: TemplateRef<any>;
-  dtOptions: DataTables.Settings = {};
+  dtOptions: any = {};
+
   prueba = '2';
   docentes = [
     {
@@ -71,6 +72,12 @@ export class DocentesListarDocenteComponent {
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
+    this.dtOptions = {
+      ajax: 'data/data.json',
+
+      // Use this attribute to enable the responsive extension
+      responsive: true,
+    };
     this.registrarDocente = this.fb.group({
       codigo: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
