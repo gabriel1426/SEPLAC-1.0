@@ -61,7 +61,7 @@ export class DocentesListarDocenteComponent {
       estado: 'activo',
     },
   ];
-  reactiveForm2: FormGroup;
+  registrarDocente: FormGroup;
   modificarDocente: FormGroup;
 
   constructor(
@@ -71,7 +71,7 @@ export class DocentesListarDocenteComponent {
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
-    this.reactiveForm2 = this.fb.group({
+    this.registrarDocente = this.fb.group({
       codigo: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       nombre: ['', [Validators.required]],
@@ -113,7 +113,7 @@ export class DocentesListarDocenteComponent {
         emptyTable: 'No hay datos disponibles en la tabla',
         info: 'Mostrando  _START_ a _END_ de _TOTAL_ entradas',
         infoEmpty: 'Mostrando  0 a 0 de 0 entradas',
-        infoFiltered: '(filtrado de _MAX_ total entradas)',
+        infoFiltered: '(fX_ iltrado de _MAtotal entradas)',
         infoPostFix: '',
         thousands: ',',
         lengthMenu: 'Mostrar _MENU_ entradas',
@@ -139,17 +139,17 @@ export class DocentesListarDocenteComponent {
   }
 
   modificarDocenteDialog(item: any) {
-    this.reactiveForm2.controls.codigo.setValue(item.codigo);
-    this.reactiveForm2.controls.email.setValue(item.email);
-    this.reactiveForm2.controls.nombre.setValue(item.nombre);
-    this.reactiveForm2.controls.contrato.setValue(item.contrato);
-    this.reactiveForm2.controls.mobile.setValue(item.mobile);
-    this.reactiveForm2.patchValue({ cargo: '1' });
-    this.reactiveForm2.controls.dependencia.setValue('dependencia');
-    this.reactiveForm2.controls.apellido.setValue(item.apellido);
-    this.reactiveForm2.controls.estado.setValue(item.estado);
+    this.modificarDocente.controls.codigo.setValue(item.codigo);
+    this.modificarDocente.controls.email.setValue(item.email);
+    this.modificarDocente.controls.nombre.setValue(item.nombre);
+    this.modificarDocente.controls.contrato.setValue(item.contrato);
+    this.modificarDocente.controls.mobile.setValue(item.mobile);
+    this.modificarDocente.patchValue({ cargo: '1' });
+    this.modificarDocente.controls.dependencia.setValue('dependencia');
+    this.modificarDocente.controls.apellido.setValue(item.apellido);
+    this.modificarDocente.controls.estado.setValue(item.estado);
 
-    console.log(this.reactiveForm2);
+    console.log(this.modificarDocente);
     this.dialog.open(this.modificar);
   }
 

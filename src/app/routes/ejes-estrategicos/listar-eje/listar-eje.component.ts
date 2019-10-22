@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ViewChild, TemplateRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ServicesAppService } from '../../../core/services/services-app.service';
 
 @Component({
   selector: 'app-ejes-estrategicos-listar-eje',
@@ -14,78 +15,51 @@ export class EjesEstrategicosListarEjeComponent {
   @ViewChild('modificar', { static: false }) modificar: TemplateRef<any>;
   dtOptions: DataTables.Settings = {};
   prueba = '2';
-  docentes = [
+  ejes = [
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
       estado: 'activo',
+      descripcion: 'Esta es una descripción',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
       estado: 'activo',
+      descripcion: 'Esta es una descripción',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
       estado: 'activo',
+      descripcion: 'Esta es una descripción',
     },
     {
       codigo: '01',
-      email: 'gabriel@gabriel.com',
       nombre: 'gabriel',
-      contrato: 'Tiempo Completo',
-      mobile: '12321321',
-      cargo: 'Ingeniero',
-      dependencia: 'Sistemas',
-      apellido: 'Contreras',
       estado: 'activo',
+      descripcion: 'Esta es una descripción',
     },
   ];
-  reactiveForm2: FormGroup;
-  modificarDocente: FormGroup;
+  registrarEjes: FormGroup;
+  modificarEjes: FormGroup;
 
-  constructor(private snackBar: MatSnackBar, private fb: FormBuilder, public dialog: MatDialog) {
-    this.reactiveForm2 = this.fb.group({
+  constructor(
+    private provider: ServicesAppService,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    public dialog: MatDialog
+  ) {
+    this.registrarEjes = this.fb.group({
       codigo: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       nombre: ['', [Validators.required]],
-      contrato: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      cargo: ['', [Validators.required]],
-      dependencia: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
     });
 
-    this.modificarDocente = this.fb.group({
+    this.modificarEjes = this.fb.group({
       codigo: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       nombre: ['', [Validators.required]],
-      contrato: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      cargo: ['', [Validators.required]],
-      dependencia: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
     });
     this.tabla();
   }
@@ -127,22 +101,16 @@ export class EjesEstrategicosListarEjeComponent {
       },
     };
   }
-  agregarDocente() {
+  agregarEje() {
     this.dialog.open(this.agregar);
   }
 
-  modificarDocenteDialog(item: any) {
-    this.reactiveForm2.controls.codigo.setValue(item.codigo);
-    this.reactiveForm2.controls.email.setValue(item.email);
-    this.reactiveForm2.controls.nombre.setValue(item.nombre);
-    this.reactiveForm2.controls.contrato.setValue(item.contrato);
-    this.reactiveForm2.controls.mobile.setValue(item.mobile);
-    this.reactiveForm2.patchValue({ cargo: '1' });
-    this.reactiveForm2.controls.dependencia.setValue('dependencia');
-    this.reactiveForm2.controls.apellido.setValue(item.apellido);
-    this.reactiveForm2.controls.estado.setValue(item.estado);
+  modificarEjeDialog(item: any) {
+    this.modificarEjes.controls.codigo.setValue(item.codigo);
+    this.modificarEjes.controls.nombre.setValue(item.nombre);
+    this.modificarEjes.controls.descripcion.setValue(item.descripcion);
 
-    console.log(this.reactiveForm2);
+    console.log(this.modificarEjes);
     this.dialog.open(this.modificar);
   }
 
@@ -151,5 +119,46 @@ export class EjesEstrategicosListarEjeComponent {
       duration: 3000,
       panelClass: 'snackbarsusses',
     });
+  }
+  registroFallido() {
+    this.snackBar.open('Registro fallido!!', '', {
+      duration: 3000,
+      panelClass: 'snackbarfail',
+    });
+  }
+
+  listarEjes() {
+    this.provider.ListarEjes().subscribe(
+      data => {
+        this.registroExitoso();
+        this.dialog.closeAll();
+      },
+      error => {}
+    );
+  }
+
+  registrarEje() {
+    this.provider.registrarEje(this.registrarEjes.controls).subscribe(
+      data => {
+        this.registroExitoso();
+        this.dialog.closeAll();
+      },
+      error => {
+        this.registroFallido();
+      }
+    );
+  }
+
+  modificarEje() {
+    this.registroFallido();
+    this.provider.modifcarEje(this.registrarEjes.controls).subscribe(
+      data => {
+        this.registroExitoso();
+        this.dialog.closeAll();
+      },
+      error => {
+        this.registroFallido();
+      }
+    );
   }
 }
